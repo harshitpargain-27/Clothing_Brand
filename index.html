@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta http-equiv="Content-Language" content="en">
   <meta name="google" content="notranslate">
   <title>MEEN MANIFESTATION — Haute Couture Packaging & Label Identity</title>
@@ -27,7 +27,7 @@
       --border-color: #E6E1D8;
       --text-main: #252525;
       --text-muted: #7A7265;
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     [data-theme="noir"] {
@@ -39,37 +39,41 @@
       --text-muted: #A8A193;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
       background-color: var(--bg-color);
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       transition: var(--transition-smooth);
-      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    .brand-font {
+    img, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    h1, h2, h3, h4, .brand-font {
       font-family: 'Cinzel', serif;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 600;
     }
 
     .sub-font {
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
       color: var(--champagne);
     }
@@ -84,21 +88,16 @@
     }
 
     @keyframes foilSheen {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      100% {
-        background-position: 100% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
-    /* Top Official Brand Banner Strip */
+    /* Top Banner Strip */
     .top-banner-strip {
       width: 100%;
       background: #FAF8F5;
       border-bottom: 1px solid var(--border-color);
-      padding: 0.75rem 2rem;
+      padding: 0.6rem 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -106,17 +105,19 @@
     }
 
     .top-banner-strip img {
-      max-height: 72px;
+      max-height: 52px;
       width: auto;
       object-fit: contain;
     }
 
+    /* Header & Navigation */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       background: rgba(250, 248, 245, 0.94);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
       transition: var(--transition-smooth);
     }
@@ -128,46 +129,74 @@
     .nav-container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 1.1rem 2.5rem;
+      padding: 0.8rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.75rem;
     }
 
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 0.75rem;
       text-decoration: none;
       color: inherit;
+      min-width: 0;
     }
 
     .nav-logo img {
-      width: 50px;
-      height: 50px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid var(--champagne);
+      flex-shrink: 0;
     }
 
     .nav-title {
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--champagne);
     }
 
     .theme-toggle-btn {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
       color: var(--text-main);
-      padding: 0.5rem 1.1rem;
+      padding: 0.4rem 0.85rem;
       border-radius: 30px;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       cursor: pointer;
       font-weight: 600;
       transition: var(--transition-smooth);
+      white-space: nowrap;
     }
 
     .theme-toggle-btn:hover {
@@ -179,68 +208,85 @@
     .hero-section {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 4.5rem 2.5rem 3rem;
+      padding: 2.5rem 1.25rem 2rem;
       display: grid;
       grid-template-columns: 1.1fr 1fr;
-      gap: 4rem;
+      gap: 2.5rem;
       align-items: center;
     }
 
     .hero-badge {
       display: inline-block;
-      padding: 0.35rem 1rem;
+      padding: 0.3rem 0.85rem;
       border: 1px solid var(--champagne);
       border-radius: 20px;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
       color: var(--champagne);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       font-weight: 600;
     }
 
     .hero-title {
-      font-size: 3.2rem;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
       font-weight: 700;
     }
 
     .hero-slogan {
       font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
+      font-size: clamp(1rem, 3.5vw, 1.35rem);
       color: var(--champagne);
-      letter-spacing: 0.2em;
-      margin-bottom: 1.8rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.2rem;
       font-style: italic;
     }
 
     .hero-description {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 2.2rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
       max-width: 560px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat-item h4 {
+      font-size: 1.5rem;
+      color: var(--champagne);
+      line-height: 1;
+    }
+
+    .stat-item p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
     }
 
     .hero-visual-card {
       position: relative;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       border: 1px solid var(--border-color);
       background: var(--surface-color);
     }
 
     .hero-visual-card img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      transition: transform 0.8s ease;
-    }
-
-    .hero-visual-card:hover img {
-      transform: scale(1.03);
     }
 
     .hero-visual-caption {
@@ -248,73 +294,68 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 1.5rem;
-      background: linear-gradient(to top, rgba(20, 18, 15, 0.85) 0%, transparent 100%);
+      padding: 1.2rem;
+      background: linear-gradient(to top, rgba(20, 18, 15, 0.9) 0%, transparent 100%);
       color: #FFFFFF;
     }
 
-    /* Official Brand Marks Section (3 Cards) */
-    .brand-marks-section {
-      max-width: 1400px;
-      margin: 4.5rem auto;
-      padding: 0 2.5rem;
-    }
-
+    /* Section General */
     .section-header {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
+      padding: 0 0.5rem;
     }
 
     .section-header h2 {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin-bottom: 0.5rem;
     }
 
     .section-header p {
       color: var(--champagne);
-      letter-spacing: 0.3em;
-      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
       text-transform: uppercase;
       font-weight: 500;
+    }
+
+    /* Brand Marks Section */
+    .brand-marks-section {
+      max-width: 1400px;
+      margin: 3.5rem auto;
+      padding: 0 1.25rem;
     }
 
     .brand-marks-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .brand-mark-card {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      transition: var(--transition-smooth);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .brand-mark-card:hover {
-      border-color: var(--champagne);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
-    }
-
     .brand-mark-img-wrap {
       width: 100%;
-      height: 260px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #FAF8F5;
       border-radius: 8px;
       border: 1px solid var(--border-color);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       overflow: hidden;
-      padding: 1rem;
+      padding: 0.75rem;
     }
 
     .brand-mark-img-wrap img {
@@ -323,86 +364,83 @@
       object-fit: contain;
     }
 
-    /* Color Palette */
+    /* Palette Section */
     .palette-section {
       max-width: 1400px;
-      margin: 5rem auto;
-      padding: 0 2.5rem;
+      margin: 3.5rem auto;
+      padding: 0 1.25rem;
     }
 
     .palette-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .palette-card {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 1.2rem;
-      transition: var(--transition-smooth);
-      cursor: pointer;
-    }
-
-    .palette-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--champagne);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      padding: 1rem;
     }
 
     .swatch {
       width: 100%;
-      height: 120px;
+      height: 70px;
       border-radius: 6px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
-    .swatch-ivory {
-      background-color: #F8F7F3;
-    }
+    .swatch-ivory { background-color: #F8F7F3; }
+    .swatch-champagne { background: linear-gradient(135deg, #B49A70, #E0CEB0); }
+    .swatch-beige { background-color: #EDE8DF; }
+    .swatch-charcoal { background-color: #252525; }
+    .swatch-white { background-color: #FFFFFF; }
 
     /* Products Collection */
     .products-section {
       max-width: 1400px;
-      margin: 6rem auto;
-      padding: 0 2.5rem;
+      margin: 4rem auto;
+      padding: 0 1.25rem;
+    }
+
+    .products-hero-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
+      gap: 1.8rem;
     }
 
     .product-card {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-      transition: var(--transition-smooth);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
       position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--champagne);
-      box-shadow: 0 25px 55px rgba(180, 154, 112, 0.18);
     }
 
     .product-card-badge {
       position: absolute;
-      top: 1.2rem;
-      left: 1.2rem;
-      background: rgba(37, 37, 37, 0.85);
-      backdrop-filter: blur(10px);
+      top: 1rem;
+      left: 1rem;
+      background: rgba(37, 37, 37, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #F8F7F3;
-      padding: 0.3rem 0.9rem;
+      padding: 0.28rem 0.75rem;
       border-radius: 20px;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 600;
       z-index: 2;
@@ -410,10 +448,14 @@
 
     .product-img-wrap {
       width: 100%;
-      height: 480px;
+      height: 380px;
       overflow: hidden;
       position: relative;
       background: #FAF8F5;
+    }
+
+    .product-card-hero .product-img-wrap {
+      height: 440px;
     }
 
     .product-img-wrap img {
@@ -421,11 +463,6 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.06);
     }
 
     .product-img-overlay {
@@ -433,99 +470,34 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 100px;
+      height: 80px;
       background: linear-gradient(to top, var(--surface-color) 0%, transparent 100%);
       pointer-events: none;
     }
 
-    .product-info {
-      padding: 1.5rem 1.8rem 2rem;
-    }
-
-    .product-collection-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .product-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
-      letter-spacing: 0.12em;
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
-
-    .product-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-
-    .product-price-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .product-fabric-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-      border: 1px solid var(--border-color);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-    }
-
-    .product-view-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--champagne);
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .product-view-btn:hover {
-      color: var(--champagne-dark);
-    }
-
     .product-thumb-bar {
       display: flex;
-      gap: 0.6rem;
-      padding: 1rem 1.8rem 0;
+      gap: 0.5rem;
+      padding: 0.85rem 1.25rem 0;
       align-items: center;
+      overflow-x: auto;
     }
 
     .product-thumb {
-      width: 46px;
-      height: 56px;
+      width: 44px;
+      height: 52px;
       border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
       border: 2px solid var(--border-color);
-      transition: var(--transition-smooth);
       background: #FAF8F5;
       padding: 1px;
       flex-shrink: 0;
     }
 
-    .product-thumb.active, .product-thumb:hover {
+    .product-thumb.active {
       border-color: var(--champagne);
       box-shadow: 0 0 0 2px rgba(180, 154, 112, 0.4);
-      transform: translateY(-2px);
     }
 
     .product-thumb img {
@@ -533,124 +505,158 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 4px;
-      display: block;
     }
 
     .product-views-count {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--champagne);
       font-weight: 600;
       margin-left: auto;
       background: rgba(180, 154, 112, 0.12);
-      padding: 0.25rem 0.65rem;
+      padding: 0.2rem 0.5rem;
       border-radius: 12px;
+      white-space: nowrap;
     }
 
-    .products-hero-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+    .product-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
-    .product-card-hero {
-      grid-column: span 1;
+    .product-collection-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
-    .product-card-hero .product-img-wrap {
-      height: 560px;
+    .product-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
-    @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: 1fr; }
-      .products-hero-row { grid-template-columns: 1fr; }
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex-grow: 1;
     }
 
-    .swatch-champagne {
-      background: linear-gradient(135deg, #B49A70, #E0CEB0);
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: auto;
     }
 
-    .swatch-beige {
-      background-color: #EDE8DF;
+    .product-fabric-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
     }
 
-    .swatch-charcoal {
-      background-color: #252525;
+    .product-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--champagne);
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    .swatch-white {
-      background-color: #FFFFFF;
-    }
-
-    /* Asset Explorer */
+    /* Packaging Suite / Asset Explorer */
     .assets-section {
       max-width: 1400px;
-      margin: 6rem auto;
-      padding: 0 2.5rem;
+      margin: 4rem auto;
+      padding: 0 1.25rem;
     }
 
     .asset-tabs {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .asset-tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .asset-tab {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
       color: var(--text-main);
-      padding: 0.75rem 1.6rem;
-      border-radius: 40px;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
+      padding: 0.6rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: 600;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: var(--transition-smooth);
     }
 
-    .asset-tab:hover,
     .asset-tab.active {
       background: var(--champagne);
       color: #FFFFFF;
       border-color: var(--champagne);
-      box-shadow: 0 10px 20px rgba(180, 154, 112, 0.25);
     }
 
     .asset-display-container {
       background: var(--surface-color);
       border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.05);
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      min-height: 640px;
+      grid-template-columns: 1.1fr 0.9fr;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
     }
 
     .asset-viewer {
-      padding: 2.5rem;
+      padding: 1.5rem;
       background: var(--card-bg);
       display: flex;
       align-items: center;
       justify-content: center;
       border-right: 1px solid var(--border-color);
+      min-height: 280px;
     }
 
     .asset-viewer img {
       max-width: 100%;
-      max-height: 560px;
+      max-height: 420px;
       object-fit: contain;
-      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.08));
     }
 
     .asset-info {
-      padding: 3rem 2.5rem;
+      padding: 1.75rem 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -659,7 +665,7 @@
     .spec-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .spec-table tr {
@@ -667,27 +673,33 @@
     }
 
     .spec-table td {
-      padding: 0.75rem 0;
-      font-size: 0.82rem;
+      padding: 0.6rem 0;
+      font-size: 0.78rem;
     }
 
     .spec-table td:first-child {
       font-weight: 600;
-      width: 40%;
+      width: 38%;
     }
 
     .spec-table td:last-child {
       color: var(--text-muted);
     }
 
+    .action-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
     .action-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.6rem;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
       border-radius: 4px;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       font-weight: 600;
       text-decoration: none;
@@ -701,34 +713,23 @@
       border: 1px solid var(--text-main);
     }
 
-    .btn-primary:hover {
-      background: var(--champagne);
-      border-color: var(--champagne);
-      color: #FFFFFF;
-    }
-
     .btn-secondary {
       background: transparent;
       color: var(--text-main);
       border: 1px solid var(--border-color);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--champagne);
-      color: var(--champagne);
-    }
-
-    /* Editorial Renders */
+    /* Editorial Gallery */
     .gallery-section {
       max-width: 1400px;
-      margin: 6rem auto;
-      padding: 0 2.5rem;
+      margin: 4rem auto;
+      padding: 0 1.25rem;
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
+      gap: 1.8rem;
     }
 
     .gallery-card {
@@ -736,84 +737,136 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border-color);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-      border-color: var(--champagne);
     }
 
     .gallery-card img {
       width: 100%;
-      height: 480px;
+      height: 320px;
       object-fit: cover;
       display: block;
     }
 
     .gallery-content {
-      padding: 1.8rem;
+      padding: 1.25rem;
     }
 
     .gallery-content h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
     }
 
     .gallery-content p {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
 
-    /* Footer */
+    /* Manifesto Section Footer */
     .manifesto-section {
       background: #181716;
       color: #F8F7F3;
-      padding: 7rem 2.5rem;
+      padding: 4.5rem 1.25rem;
       text-align: center;
       border-top: 1px solid #332F2A;
-      margin-top: 8rem;
+      margin-top: 5rem;
     }
 
     .manifesto-quote {
       font-family: 'Cinzel', serif;
-      font-size: 2.2rem;
+      font-size: clamp(1.25rem, 4vw, 2rem);
       line-height: 1.5;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       font-style: italic;
       color: #EFEBE4;
     }
 
     .manifesto-footer-line {
-      width: 80px;
+      width: 60px;
       height: 2px;
       background: var(--champagne);
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2rem;
     }
 
-    @media (max-width: 1024px) {
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (TABLETS & MOBILE)
+       ========================================================================== */
+    @media (max-width: 992px) {
       .hero-section {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2rem;
+        padding-top: 2rem;
       }
 
       .brand-marks-grid {
         grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
       }
 
       .palette-grid {
         grid-template-columns: repeat(3, 1fr);
       }
 
+      .products-hero-row {
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .asset-display-container {
         grid-template-columns: 1fr;
       }
 
+      .asset-viewer {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+
       .gallery-grid {
         grid-template-columns: 1fr;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-title {
+        font-size: 0.85rem;
+      }
+
+      .nav-link {
+        display: none; /* Cleans up header on narrow phone viewports */
+      }
+
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-img-wrap,
+      .product-card-hero .product-img-wrap {
+        height: 380px;
+      }
+
+      .gallery-card img {
+        height: 240px;
+      }
+
+      .action-btn-row {
+        flex-direction: column;
+      }
+
+      .action-btn {
+        width: 100%;
       }
     }
   </style>
@@ -833,12 +886,12 @@
         <img src="assets/logos/meen_circular_seal_logo.jpg" alt="MEEN MANIFESTATION Stitched Seal">
         <div>
           <div class="nav-title">MEEN MANIFESTATION</div>
-          <div class="sub-font" style="font-size: 0.6rem; letter-spacing: 0.25em;">Haute Couture</div>
+          <div class="sub-font" style="font-size: 0.55rem; letter-spacing: 0.18em;">Haute Couture</div>
         </div>
       </a>
-      <div class="nav-actions" style="display: flex; align-items: center; gap: 1.5rem;">
-        <a href="#collection" style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--text-main); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--champagne)'" onmouseout="this.style.color='var(--text-main)'">Collection</a>
-        <a href="#packaging" style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--text-main); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--champagne)'" onmouseout="this.style.color='var(--text-main)'">Packaging</a>
+      <div class="nav-actions">
+        <a href="#collection" class="nav-link">Collection</a>
+        <a href="#packaging" class="nav-link">Packaging</a>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">Atelier Noir</button>
       </div>
     </div>
@@ -874,14 +927,14 @@
       <img src="assets/renders/meen_packaging_seal_hero.jpg"
         alt="MEEN MANIFESTATION Packaging Suite with Circular Stitched Seal">
       <div class="hero-visual-caption">
-        <div class="brand-font" style="font-size: 0.9rem; letter-spacing: 0.2em;">CIRCULAR STITCHED SEAL SUITE</div>
-        <div style="font-size: 0.75rem; color: #E8D9C0; margin-top: 0.2rem;">Matte Ivory &bull; Champagne Hot Stamping
+        <div class="brand-font" style="font-size: 0.85rem; letter-spacing: 0.18em;">CIRCULAR STITCHED SEAL SUITE</div>
+        <div style="font-size: 0.72rem; color: #E8D9C0; margin-top: 0.2rem;">Matte Ivory &bull; Champagne Hot Stamping
           &bull; Circular Stitched Medallion</div>
       </div>
     </div>
   </section>
 
-  <!-- Official Brand Marks Section (Banner, Logo, Circular Stitched Seal) -->
+  <!-- Official Brand Marks Section -->
   <section class="brand-marks-section">
     <div class="section-header">
       <h2>Official Brand Assets</h2>
@@ -895,13 +948,12 @@
         </div>
         <div>
           <div class="sub-font">BRAND ASSET 01</div>
-          <h3 style="font-size: 1.15rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Official Horizontal Banner</h3>
-          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
+          <h3 style="font-size: 1.1rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Official Horizontal Banner</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
             Celestial fish line-art on left, centered brand typography, and slogan with golden reflection.
           </p>
         </div>
-        <a href="assets/logos/meen_brand_banner.svg" target="_blank" class="action-btn btn-secondary">Open Vector
-          Banner</a>
+        <a href="assets/logos/meen_brand_banner.svg" target="_blank" class="action-btn btn-secondary">Open Vector Banner</a>
       </div>
 
       <!-- 2. The Official Logo -->
@@ -911,29 +963,27 @@
         </div>
         <div>
           <div class="sub-font">BRAND ASSET 02</div>
-          <h3 style="font-size: 1.15rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Official Primary Logo</h3>
-          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
+          <h3 style="font-size: 1.1rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Official Primary Logo</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
             The Celestial Golden Fish ("Meen") with cross-hatched scales, radiating fins, and sparkle stars.
           </p>
         </div>
         <a href="assets/logos/meen_brand_logo.svg" target="_blank" class="action-btn btn-secondary">Open Vector Logo</a>
       </div>
 
-      <!-- 3. The Official Circular Stitched Seal (REPLACING MM MONOGRAM) -->
-      <div class="brand-mark-card"
-        style="border-color: var(--champagne); box-shadow: 0 15px 35px rgba(180, 154, 112, 0.15);">
+      <!-- 3. The Official Circular Stitched Seal -->
+      <div class="brand-mark-card" style="border-color: var(--champagne); box-shadow: 0 10px 30px rgba(180, 154, 112, 0.15);">
         <div class="brand-mark-img-wrap">
           <img src="assets/logos/meen_circular_seal_logo.jpg" alt="MEEN MANIFESTATION Circular Stitched Seal">
         </div>
         <div>
           <div class="sub-font" style="color: var(--champagne); font-weight: 700;">OFFICIAL EMBLEM SEAL</div>
-          <h3 style="font-size: 1.15rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Circular Stitched Medallion</h3>
-          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
+          <h3 style="font-size: 1.1rem; margin-top: 0.4rem; margin-bottom: 0.5rem;">Circular Stitched Medallion</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">
             Concentric stitched couture perimeter enclosing the celestial fish and curved brand wordmark.
           </p>
         </div>
-        <a href="assets/logos/meen_circular_seal_logo.svg" target="_blank" class="action-btn btn-primary">Open Vector
-          Seal</a>
+        <a href="assets/logos/meen_circular_seal_logo.svg" target="_blank" class="action-btn btn-primary">Open Vector Seal</a>
       </div>
     </div>
   </section>
@@ -947,38 +997,33 @@
     <div class="palette-grid">
       <div class="palette-card">
         <div class="swatch swatch-ivory"></div>
-        <div class="brand-font" style="font-size: 1rem; margin-bottom: 0.3rem;">Ivory</div>
-        <div style="font-size: 0.8rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.4rem;">#F8F7F3</div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);">Primary substrate stock. 320gsm warm tactile cotton
-          artboard.</div>
+        <div class="brand-font" style="font-size: 0.95rem; margin-bottom: 0.2rem;">Ivory</div>
+        <div style="font-size: 0.78rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.3rem;">#F8F7F3</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">Primary substrate stock. 320gsm cotton artboard.</div>
       </div>
       <div class="palette-card">
         <div class="swatch swatch-champagne"></div>
-        <div class="brand-font" style="font-size: 1rem; margin-bottom: 0.3rem;">Champagne</div>
-        <div style="font-size: 0.8rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.4rem;">#B49A70</div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);">Hot foil stamping & circular seal metallic
-          highlights. Kurz 429.</div>
+        <div class="brand-font" style="font-size: 0.95rem; margin-bottom: 0.2rem;">Champagne</div>
+        <div style="font-size: 0.78rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.3rem;">#B49A70</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">Hot foil stamping & circular seal metallic highlights. Kurz 429.</div>
       </div>
       <div class="palette-card">
         <div class="swatch swatch-beige"></div>
-        <div class="brand-font" style="font-size: 1rem; margin-bottom: 0.3rem;">Beige</div>
-        <div style="font-size: 0.8rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.4rem;">#EDE8DF</div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);">Rigid apparel box exterior & mailer kraft. G.F Smith
-          Cashmere.</div>
+        <div class="brand-font" style="font-size: 0.95rem; margin-bottom: 0.2rem;">Beige</div>
+        <div style="font-size: 0.78rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.3rem;">#EDE8DF</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">Rigid apparel box exterior & kraft mailer packaging.</div>
       </div>
       <div class="palette-card">
         <div class="swatch swatch-charcoal"></div>
-        <div class="brand-font" style="font-size: 1rem; margin-bottom: 0.3rem;">Charcoal</div>
-        <div style="font-size: 0.8rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.4rem;">#252525</div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);">Deep carbon ink for wordmarks & woven neck collar
-          labels.</div>
+        <div class="brand-font" style="font-size: 0.95rem; margin-bottom: 0.2rem;">Charcoal</div>
+        <div style="font-size: 0.78rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.3rem;">#252525</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">Deep carbon ink for wordmarks & woven neck labels.</div>
       </div>
       <div class="palette-card">
         <div class="swatch swatch-white"></div>
-        <div class="brand-font" style="font-size: 1rem; margin-bottom: 0.3rem;">White</div>
-        <div style="font-size: 0.8rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.4rem;">#FFFFFF</div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);">24gsm archival translucent tissue & pure silk garment
-          linings.</div>
+        <div class="brand-font" style="font-size: 0.95rem; margin-bottom: 0.2rem;">White</div>
+        <div style="font-size: 0.78rem; color: var(--champagne); font-weight: 600; margin-bottom: 0.3rem;">#FFFFFF</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">24gsm archival translucent tissue & silk garment linings.</div>
       </div>
     </div>
   </section>
@@ -990,9 +1035,9 @@
       <p>Curated Haute Couture &amp; Ready-to-Wear by Meen Manifestation</p>
     </div>
 
-    <!-- Hero Spotlight Row: 2 Signature Multi-Angle Ensembles -->
+    <!-- Hero Spotlight Row -->
     <div class="products-hero-row">
-      <!-- Signature Product 1: Maroon Embroidered Kurti Set (3 Angles in ONE Product Card) -->
+      <!-- Signature Product 1 -->
       <div class="product-card product-card-hero">
         <div class="product-card-badge">Signature Atelier</div>
         <div class="product-img-wrap">
@@ -1000,7 +1045,6 @@
           <div class="product-img-overlay"></div>
         </div>
 
-        <!-- Multi-Angle Thumbnail Switcher (Same Product, 3 Angles) -->
         <div class="product-thumb-bar">
           <div class="product-thumb active" onclick="switchProductImage('maroonProductImg', 'assets/products/product_maroon_front.jpg', this)" title="Front View">
             <img src="assets/products/product_maroon_front.jpg" alt="Front View">
@@ -1011,21 +1055,21 @@
           <div class="product-thumb" onclick="switchProductImage('maroonProductImg', 'assets/products/product_maroon_drape.jpg', this)" title="Drape Angle View">
             <img src="assets/products/product_maroon_drape.jpg" alt="Drape Angle View">
           </div>
-          <span class="product-views-count">3 Angles &bull; Tap to View</span>
+          <span class="product-views-count">3 Angles</span>
         </div>
 
         <div class="product-info">
           <div class="product-collection-tag">Atelier Festive 2026</div>
           <div class="product-name">Bordeaux Zari Embroidered Silk Suit</div>
-          <div class="product-desc">Deep crimson-bordeaux silk chanderi tunic featuring intricate ivory-gold threadwork across the neckline, paired with straight-cut matching trousers and gossamer organza dupatta with gold scalloped trim.</div>
+          <div class="product-desc">Deep crimson-bordeaux silk chanderi tunic featuring intricate ivory-gold threadwork across the neckline, paired with straight trousers and gossamer organza dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Chanderi Silk &bull; Hand Embroidery</span>
+            <span class="product-fabric-tag">Chanderi Silk</span>
             <span class="product-view-btn">Inspect Craftsmanship &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Signature Product 2: Cerulean Blue Embroidered Silk Suit (2 Angles in ONE Product Card) -->
+      <!-- Signature Product 2 -->
       <div class="product-card product-card-hero">
         <div class="product-card-badge">New Arrival</div>
         <div class="product-img-wrap">
@@ -1033,7 +1077,6 @@
           <div class="product-img-overlay"></div>
         </div>
 
-        <!-- Multi-Angle Thumbnail Switcher (Same Product, Front & Back Views) -->
         <div class="product-thumb-bar">
           <div class="product-thumb active" onclick="switchProductImage('blueProductImg', 'assets/products/product_blue_front.jpg', this)" title="Front View">
             <img src="assets/products/product_blue_front.jpg" alt="Front View">
@@ -1041,24 +1084,24 @@
           <div class="product-thumb" onclick="switchProductImage('blueProductImg', 'assets/products/product_blue_back.jpg', this)" title="Back View">
             <img src="assets/products/product_blue_back.jpg" alt="Back View">
           </div>
-          <span class="product-views-count">2 Views &bull; Front &amp; Back</span>
+          <span class="product-views-count">2 Views</span>
         </div>
 
         <div class="product-info">
           <div class="product-collection-tag">Azure Celestial &bull; Summer 2026</div>
           <div class="product-name">Cerulean Blue Embroidered Silk Suit</div>
-          <div class="product-desc">Vibrant azure blue textured silk kurti with delicate silver-gold botanical motifs on the yoke and cuffs, paired with an artisan water-wash organza dupatta with scalloped lace hem and printed pants.</div>
+          <div class="product-desc">Vibrant azure blue textured silk kurti with delicate botanical motifs, paired with an artisan water-wash organza dupatta with scalloped lace hem.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Textured Silk &bull; Organza Dupatta</span>
+            <span class="product-fabric-tag">Textured Silk</span>
             <span class="product-view-btn">Inspect Craftsmanship &rarr;</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Product Grid: Distinct Ensembles -->
+    <!-- Product Grid -->
     <div class="products-grid">
-      <!-- Product 3: Mauve Royale Zari Embroidered Silk Kurti (NEW) -->
+      <!-- Product 3 -->
       <div class="product-card">
         <div class="product-card-badge">Couture Edit</div>
         <div class="product-img-wrap">
@@ -1068,15 +1111,15 @@
         <div class="product-info">
           <div class="product-collection-tag">Atelier Royale</div>
           <div class="product-name">Mauve Royale Embroidered Suit</div>
-          <div class="product-desc">Luxurious dusty amethyst raw silk silhouette embellished with opulent champagne-gold zari vine needlework along the placket and cuffs, with matching fluid silk dupatta.</div>
+          <div class="product-desc">Luxurious dusty amethyst raw silk silhouette embellished with opulent champagne-gold zari vine needlework along the placket and cuffs.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Raw Silk &bull; Zari Filigree</span>
+            <span class="product-fabric-tag">Raw Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 4: Fuchsia Gardenia Embroidered Silk Kurti (NEW) -->
+      <!-- Product 4 -->
       <div class="product-card">
         <div class="product-card-badge">Summer Festive</div>
         <div class="product-img-wrap">
@@ -1086,15 +1129,15 @@
         <div class="product-info">
           <div class="product-collection-tag">Botanical Couture</div>
           <div class="product-name">Fuchsia Gardenia Silk Ensemble</div>
-          <div class="product-desc">Radiant magenta-fuchsia straight kurti highlighted with hand-painted ivory and buttercup floral shoulder motifs, draped with a contrasting mustard yellow floral silk dupatta.</div>
+          <div class="product-desc">Radiant magenta straight kurti highlighted with hand-painted ivory floral motifs, draped with a contrasting mustard yellow floral silk dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Mulberry Silk &bull; Handpainted</span>
+            <span class="product-fabric-tag">Mulberry Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 5: Wine & Ochre Gold Appliqué Kurti (NEW) -->
+      <!-- Product 5 -->
       <div class="product-card">
         <div class="product-card-badge">Heritage Craft</div>
         <div class="product-img-wrap">
@@ -1104,15 +1147,15 @@
         <div class="product-info">
           <div class="product-collection-tag">Gilded Botanicals</div>
           <div class="product-name">Wine &amp; Ochre Gilded Kurti Set</div>
-          <div class="product-desc">Deep plum-wine tailored tunic showcasing dramatic gilded botanical appliqués cascading upward from the hemline, accompanied by a rich mustard yellow block-printed dupatta.</div>
+          <div class="product-desc">Deep plum tailored tunic showcasing dramatic gilded botanical appliqués with a rich mustard yellow block-printed dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Matte Chanderi &bull; Foil Print</span>
+            <span class="product-fabric-tag">Matte Chanderi</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 6: Noir Kurti with Handwoven Ikat Dupatta -->
+      <!-- Product 6 -->
       <div class="product-card">
         <div class="product-card-badge">Couture Weave</div>
         <div class="product-img-wrap">
@@ -1120,17 +1163,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Heritage Weave &bull; Ikat Artisans</div>
+          <div class="product-collection-tag">Heritage Weave</div>
           <div class="product-name">Noir Silk Kurti &amp; Ikat Dupatta</div>
-          <div class="product-desc">Understated matte noir pure silk tunic paired with an authentic double-ikat handwoven chevron dupatta in vermillion, mustard yellow, and ivory with hand-knotted fringe.</div>
+          <div class="product-desc">Understated matte noir pure silk tunic paired with an authentic double-ikat handwoven chevron dupatta in vermillion and ivory.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Raw Silk &bull; Double Ikat</span>
+            <span class="product-fabric-tag">Raw Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 7: Pristine Ivory Tonal Ensemble -->
+      <!-- Product 7 -->
       <div class="product-card">
         <div class="product-card-badge">Monochrome Edit</div>
         <div class="product-img-wrap">
@@ -1140,7 +1183,7 @@
         <div class="product-info">
           <div class="product-collection-tag">Minimalist Luxury</div>
           <div class="product-name">Pristine Ivory Tonal Ensemble</div>
-          <div class="product-desc">Flawless off-white fine cotton silk co-ord set accented by a woven champagne-gold and charcoal border stole with delicate tassel fringe.</div>
+          <div class="product-desc">Flawless off-white fine cotton silk co-ord set accented by a woven champagne-gold and charcoal border stole with fringe.</div>
           <div class="product-price-row">
             <span class="product-fabric-tag">Fine Cotton Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
@@ -1148,7 +1191,7 @@
         </div>
       </div>
 
-      <!-- Product 8: Noir Gold Medallion Kurti -->
+      <!-- Product 8 -->
       <div class="product-card">
         <div class="product-card-badge">Celestial Edition</div>
         <div class="product-img-wrap">
@@ -1166,7 +1209,7 @@
         </div>
       </div>
 
-      <!-- Product 9: Red & Black Ikat Kurti -->
+      <!-- Product 9 -->
       <div class="product-card">
         <div class="product-card-badge">Artisan Craft</div>
         <div class="product-img-wrap">
@@ -1184,7 +1227,7 @@
         </div>
       </div>
 
-      <!-- Product 10: Saffron Floral Kurti -->
+      <!-- Product 10 -->
       <div class="product-card">
         <div class="product-card-badge">Summer Bloom</div>
         <div class="product-img-wrap">
@@ -1202,7 +1245,7 @@
         </div>
       </div>
 
-      <!-- Product 11: Ivory Botanical Colorblock Kurti -->
+      <!-- Product 11 -->
       <div class="product-card">
         <div class="product-card-badge">Contemporary</div>
         <div class="product-img-wrap">
@@ -1220,7 +1263,7 @@
         </div>
       </div>
 
-      <!-- Product 12: Globe Geometric Art Kurti -->
+      <!-- Product 12 -->
       <div class="product-card">
         <div class="product-card-badge">Architectural</div>
         <div class="product-img-wrap">
@@ -1238,7 +1281,7 @@
         </div>
       </div>
 
-      <!-- Product 13: Pistachio Silk Suit & Fuchsia Stole (NEW) -->
+      <!-- Product 13 -->
       <div class="product-card">
         <div class="product-card-badge">Spring Pastel</div>
         <div class="product-img-wrap">
@@ -1248,15 +1291,15 @@
         <div class="product-info">
           <div class="product-collection-tag">Lush Botanica &bull; Spring 2026</div>
           <div class="product-name">Pistachio Silk Suit &amp; Fuchsia Stole</div>
-          <div class="product-desc">Fresh pistachio-lime fine silk kurti adorned with delicate rosebud motifs, styled with a striking fuchsia pink contrast chiffon dupatta and straight matching trousers.</div>
+          <div class="product-desc">Fresh pistachio-lime fine silk kurti adorned with delicate rosebud motifs, styled with a striking fuchsia pink contrast chiffon dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Chanderi Silk &bull; Chiffon Dupatta</span>
+            <span class="product-fabric-tag">Chanderi Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 14: Charcoal Zari Suit & Sheer Silver Stole (NEW) -->
+      <!-- Product 14 -->
       <div class="product-card">
         <div class="product-card-badge">Noir Royale</div>
         <div class="product-img-wrap">
@@ -1264,17 +1307,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Evening Soirée &bull; Silver Edition</div>
+          <div class="product-collection-tag">Evening Soirée</div>
           <div class="product-name">Charcoal Zari Suit &amp; Silver Stole</div>
-          <div class="product-desc">Deep charcoal noir silk kurti featuring intricate silver zari filigree along the split neckline and sleeves, paired with an ethereal sheer silver-striped organza dupatta.</div>
+          <div class="product-desc">Deep charcoal noir silk kurti featuring intricate silver zari filigree along the split neckline and sleeves, paired with sheer organza dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Pure Silk &bull; Silver Zari</span>
+            <span class="product-fabric-tag">Pure Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 15: Ivory Collared Botanical Tunic (NEW) -->
+      <!-- Product 15 -->
       <div class="product-card">
         <div class="product-card-badge">Tailored Luxe</div>
         <div class="product-img-wrap">
@@ -1282,17 +1325,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Sartorial Linen &bull; Resort Edit</div>
+          <div class="product-collection-tag">Sartorial Linen</div>
           <div class="product-name">Ivory Collared Botanical Tunic</div>
-          <div class="product-desc">Textured chevron-weave cotton tunic featuring an elegant spread lapel collar, delicate rose-pink and sage leaf embroidery, and tailored front button detailing.</div>
+          <div class="product-desc">Textured chevron-weave cotton tunic featuring an elegant spread lapel collar, delicate rose-pink and sage leaf embroidery, and tailored buttons.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Textured Cotton &bull; Hand Embroidered</span>
+            <span class="product-fabric-tag">Textured Cotton</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 16: Pearl White Floral Kurti & Mint Dupatta (NEW) -->
+      <!-- Product 16 -->
       <div class="product-card">
         <div class="product-card-badge">Pastel Meadow</div>
         <div class="product-img-wrap">
@@ -1300,17 +1343,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Summer Breeze &bull; Gardenia</div>
+          <div class="product-collection-tag">Summer Breeze</div>
           <div class="product-name">Pearl White Floral &amp; Mint Dupatta</div>
-          <div class="product-desc">Pristine pearl white cotton kurti adorned with multi-hued wild floral branch embroidery along the collar and cuffs, complemented by a gossamer sage-mint dupatta.</div>
+          <div class="product-desc">Pristine pearl white cotton kurti adorned with multi-hued wild floral branch embroidery along the collar, with gossamer sage-mint dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Fine Mulmul Cotton &bull; Lace Trim</span>
+            <span class="product-fabric-tag">Fine Mulmul Cotton</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 17: Scalloped Ivory Floral Garden Kurti -->
+      <!-- Product 17 -->
       <div class="product-card">
         <div class="product-card-badge">Artisan Cutwork</div>
         <div class="product-img-wrap">
@@ -1318,17 +1361,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Couture Cutwork &bull; Ivory Edit</div>
+          <div class="product-collection-tag">Couture Cutwork</div>
           <div class="product-name">Scalloped Ivory Garden Kurti</div>
-          <div class="product-desc">Artisan-crafted ivory straight kurti featuring delicate scalloped edging across the neckline, cuffs, and hem, highlighted by painted coral and teal garden motifs.</div>
+          <div class="product-desc">Artisan-crafted ivory straight kurti featuring delicate scalloped edging across the neckline and cuffs, with painted coral garden motifs.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Chanderi Silk &bull; Scalloped Cutwork</span>
+            <span class="product-fabric-tag">Chanderi Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 18: Rani Pink Banarasi Gota Lehenga (NEW) -->
+      <!-- Product 18 -->
       <div class="product-card">
         <div class="product-card-badge">Haute Bridal</div>
         <div class="product-img-wrap">
@@ -1336,17 +1379,17 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Royal Banaras &bull; Bridal Atelier</div>
+          <div class="product-collection-tag">Royal Banaras</div>
           <div class="product-name">Rani Pink Banarasi Gota Lehenga</div>
-          <div class="product-desc">Regal fuchsia-rani silk lehenga ensemble featuring multi-tiered gold gota patti scalloped borders, fitted brocade choli, and an authentic handwoven gold Banarasi zari dupatta.</div>
+          <div class="product-desc">Regal fuchsia silk lehenga ensemble featuring multi-tiered gold gota patti scalloped borders and handwoven gold Banarasi zari dupatta.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Pure Silk &bull; Gold Banarasi Zari</span>
+            <span class="product-fabric-tag">Pure Silk</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
       </div>
 
-      <!-- Product 19: Hydrangea Blue Schiffli Tiered Dress (NEW) -->
+      <!-- Product 19 -->
       <div class="product-card">
         <div class="product-card-badge">Resort Elegance</div>
         <div class="product-img-wrap">
@@ -1354,11 +1397,11 @@
           <div class="product-img-overlay"></div>
         </div>
         <div class="product-info">
-          <div class="product-collection-tag">Hydrangea Reverie &bull; Summer 2026</div>
+          <div class="product-collection-tag">Summer 2026</div>
           <div class="product-name">Hydrangea Blue Schiffli Dress</div>
-          <div class="product-desc">Ethereal cornflower-blue tiered maxi sundress in delicate schiffli eyelet cotton lace with slender spaghetti straps, gathered flounce hem, and fluid silhouette.</div>
+          <div class="product-desc">Ethereal cornflower-blue tiered maxi sundress in delicate schiffli eyelet cotton lace with slender straps and flounce hem.</div>
           <div class="product-price-row">
-            <span class="product-fabric-tag">Schiffli Cotton &bull; Tiered Flounce</span>
+            <span class="product-fabric-tag">Schiffli Cotton</span>
             <span class="product-view-btn">Details &rarr;</span>
           </div>
         </div>
@@ -1366,7 +1409,7 @@
     </div>
   </section>
 
-  <!-- Asset Explorer Suite (All 8 Touchpoints) -->
+  <!-- Asset Explorer Suite -->
   <section class="assets-section" id="packaging">
     <div class="section-header">
       <h2>The Packaging & Label Suite</h2>
@@ -1390,13 +1433,10 @@
       </div>
       <div class="asset-info">
         <div>
-          <div class="sub-font" id="assetNumber" style="font-weight: 700; margin-bottom: 0.5rem;">ASSET 01 // PRODUCTION
-            READY</div>
-          <h3 class="brand-font" style="font-size: 2rem; margin-bottom: 1.2rem;" id="assetTitle">Luxury Shopping Bag
-          </h3>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;" id="assetDesc">
-            Matte ivory boutique carrier bag featuring the circular stitched celestial fish seal embossed in champagne
-            gold hot foil, paired with thick braided cotton rope handles.
+          <div class="sub-font" id="assetNumber" style="font-weight: 700; margin-bottom: 0.4rem;">ASSET 01 // PRODUCTION READY</div>
+          <h3 class="brand-font" style="font-size: 1.4rem; margin-bottom: 0.8rem;" id="assetTitle">Luxury Shopping Bag</h3>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;" id="assetDesc">
+            Matte ivory boutique carrier bag featuring the circular stitched celestial fish seal embossed in champagne gold hot foil, paired with thick braided cotton rope handles.
           </p>
           <table class="spec-table" id="assetSpecs">
             <tr>
@@ -1421,64 +1461,54 @@
             </tr>
           </table>
         </div>
-        <div style="display: flex; gap: 1rem;">
-          <a id="vectorLink" href="assets/packaging/01_luxury_shopping_bag_front.svg" target="_blank"
-            class="action-btn btn-primary">Open Vector SVG</a>
-          <a id="dielineLink" href="assets/packaging/01_luxury_shopping_bag_dieline.svg" target="_blank"
-            class="action-btn btn-secondary">View Dieline</a>
+        <div class="action-btn-row">
+          <a id="vectorLink" href="assets/packaging/01_luxury_shopping_bag_front.svg" target="_blank" class="action-btn btn-primary">Open Vector SVG</a>
+          <a id="dielineLink" href="assets/packaging/01_luxury_shopping_bag_dieline.svg" target="_blank" class="action-btn btn-secondary">View Dieline</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Editorial Photography Mockups Section -->
+  <!-- Editorial Studio Gallery -->
   <section class="gallery-section">
     <div class="section-header">
       <h2>Editorial Studio Gallery</h2>
       <p>Featuring the Circular Stitched Seal &amp; Celestial Fish</p>
     </div>
     <div class="gallery-grid">
-      <!-- 1 -->
       <div class="gallery-card">
         <img src="assets/renders/meen_packaging_seal_hero.jpg" alt="Packaging Suite with Circular Seal">
         <div class="gallery-content">
           <div class="sub-font">TOUCHPOINTS 01 &bull; 02 &bull; 03</div>
           <h3 class="brand-font">Circular Stitched Seal Packaging Ensemble</h3>
-          <p>Haute-couture presentation on an ivory limestone pedestal displaying the shopping bag, rigid box, and hang
-            tag hot foil stamped with the circular stitched seal.</p>
+          <p>Haute-couture presentation on an ivory limestone pedestal displaying the shopping bag, rigid box, and hang tag hot foil stamped with the circular stitched seal.</p>
         </div>
       </div>
 
-      <!-- 2 -->
       <div class="gallery-card">
         <img src="assets/renders/meen_clothing_labels_fish_macro.jpg" alt="Macro Label with Fish Emblem">
         <div class="gallery-content">
           <div class="sub-font">TOUCHPOINTS 03 &bull; 04</div>
           <h3 class="brand-font">Woven Fish Collar Label &amp; Gilded Hang Tag</h3>
-          <p>Macro editorial capture of the charcoal damask jacquard collar label woven with metallic champagne gold
-            lurex threads, and the beveled gold hang tag.</p>
+          <p>Macro editorial capture of the charcoal damask jacquard collar label woven with metallic champagne gold lurex threads, and the beveled gold hang tag.</p>
         </div>
       </div>
 
-      <!-- 3 -->
       <div class="gallery-card">
         <img src="assets/renders/meen_shipping_presentation.jpg" alt="Shipping Unboxing Presentation">
         <div class="gallery-content">
           <div class="sub-font">TOUCHPOINTS 05 &bull; 06 &bull; 07</div>
           <h3 class="brand-font">E-Commerce Unboxing Presentation</h3>
-          <p>Durable kraft shipper box with custom water-activated brand tape, opened to reveal the inner lid welcome
-            manifesto, celestial tissue paper wrap, and gold foil seal.</p>
+          <p>Durable kraft shipper box with custom water-activated brand tape, opened to reveal the inner lid welcome manifesto, celestial tissue paper wrap, and gold foil seal.</p>
         </div>
       </div>
 
-      <!-- 4 -->
       <div class="gallery-card">
         <img src="assets/renders/meen_social_identity.jpg" alt="Social Media Identity">
         <div class="gallery-content">
           <div class="sub-font">TOUCHPOINT 08</div>
           <h3 class="brand-font">Instagram Profile &amp; Editorial Feed</h3>
-          <p>Curated social media identity featuring verified house bio, 5 circular highlight badges, and a harmonic
-            neutral aesthetic grid showcasing luxury cashmere silhouettes.</p>
+          <p>Curated social media identity featuring verified house bio, 5 circular highlight badges, and a harmonic neutral aesthetic grid showcasing luxury cashmere silhouettes.</p>
         </div>
       </div>
     </div>
@@ -1487,19 +1517,16 @@
   <!-- Manifesto Signoff Footer -->
   <footer class="manifesto-section">
     <div style="max-width: 800px; margin: 0 auto;">
-      <div class="sub-font" style="letter-spacing: 0.4em; margin-bottom: 1.5rem;">THE MANIFESTO</div>
+      <div class="sub-font" style="letter-spacing: 0.3em; margin-bottom: 1.2rem;">THE MANIFESTO</div>
       <div class="manifesto-quote">
         "Thank you for being part of our manifestation.<br>
         Wear your identity.<br>
         Manifest your style."
       </div>
       <div class="manifesto-footer-line"></div>
-      <div class="brand-font" style="font-size: 1.4rem; letter-spacing: 0.35em; margin-bottom: 0.8rem;">MEEN
-        MANIFESTATION</div>
-      <div style="font-size: 0.75rem; letter-spacing: 0.25em; color: #9E9484;">NOT JUST FASHION. A STATEMENT OF
-        IDENTITY.</div>
-      <div style="font-size: 0.7rem; letter-spacing: 0.2em; color: #7A7265; margin-top: 1rem;">DESIGNED BY HARSHIT
-        PARGAIN</div>
+      <div class="brand-font" style="font-size: 1.15rem; letter-spacing: 0.25em; margin-bottom: 0.5rem;">MEEN MANIFESTATION</div>
+      <div style="font-size: 0.7rem; letter-spacing: 0.18em; color: #9E9484;">NOT JUST FASHION. A STATEMENT OF IDENTITY.</div>
+      <div style="font-size: 0.65rem; letter-spacing: 0.15em; color: #7A7265; margin-top: 0.8rem;">DESIGNED BY HARSHIT PARGAIN</div>
     </div>
   </footer>
 
@@ -1657,7 +1684,7 @@
       const btn = document.getElementById('themeBtn');
       if (body.getAttribute('data-theme') === 'noir') {
         body.removeAttribute('data-theme');
-        btn.textContent = 'Luxury Dark';
+        btn.textContent = 'Luxury Noir';
       } else {
         body.setAttribute('data-theme', 'noir');
         btn.textContent = 'Luxury Ivory';
