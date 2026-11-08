@@ -1,0 +1,225 @@
+"""
+MEEN MANIFESTATION - Celestial Fish ('Meen') Vector Brand Asset Generator
+Accurately models the brand's celestial fish logo (Image 2) and banner lockup (Image 1).
+"""
+
+def get_celestial_fish_svg(x=0, y=0, scale=1.0, color="url(#champagneFoil)", show_sparkles=True):
+    sparkles = ""
+    if show_sparkles:
+        sparkles = f'''
+        <!-- 4-point Sparkle Stars around Celestial Fish -->
+        <!-- Top Right Star -->
+        <g transform="translate(240, 60) scale(0.8)">
+          <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="{color}" />
+        </g>
+        <g transform="translate(260, 90) scale(0.45)">
+          <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="{color}" />
+        </g>
+        <!-- Bottom Left Star -->
+        <g transform="translate(65, 230) scale(0.65)">
+          <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="{color}" />
+        </g>
+        <!-- Bottom Right Star -->
+        <g transform="translate(250, 245) scale(0.65)">
+          <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="{color}" />
+        </g>
+        <!-- Tiny Sparkle Dots -->
+        <circle cx="230" cy="50" r="2.5" fill="{color}" />
+        <circle cx="215" cy="245" r="2" fill="{color}" />
+        <circle cx="95" cy="248" r="2" fill="{color}" />
+
+        <!-- Floating Bubbles from Mouth -->
+        <circle cx="10" cy="115" r="4.5" fill="none" stroke="{color}" stroke-width="1.8" />
+        <circle cx="-5" cy="100" r="3" fill="none" stroke="{color}" stroke-width="1.5" />
+        <circle cx="5" cy="75" r="5.5" fill="none" stroke="{color}" stroke-width="1.8" />
+        <circle cx="-15" cy="65" r="3.5" fill="none" stroke="{color}" stroke-width="1.5" />
+        '''
+
+    return f'''
+    <g transform="translate({x}, {y}) scale({scale})" class="meen-celestial-fish">
+      {sparkles}
+
+      <!-- Main Fish Body Silhouette Base -->
+      <path d="M 40 145 C 30 140 20 155 20 160 C 20 165 30 170 45 180 C 80 205 130 205 170 175 C 190 160 205 155 230 150 C 195 130 160 115 125 110 C 80 105 55 125 40 145 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.5" stroke-linejoin="round" />
+
+      <!-- Head & Eye Details -->
+      <!-- Smiling Eye -->
+      <path d="M 45 145 Q 52 140 60 145" fill="none" stroke="{color}" stroke-width="2.8" stroke-linecap="round" />
+      <!-- Mouth Contour -->
+      <path d="M 22 162 Q 32 170 42 165" fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" />
+      <!-- Gill Arch Line -->
+      <path d="M 68 140 C 78 155 76 175 62 190" fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" />
+      <path d="M 76 148 C 84 160 82 175 72 185" fill="none" stroke="{color}" stroke-width="1.2" stroke-linecap="round" opacity="0.7" />
+
+      <!-- Cross-Hatched Diamond Scales on Body -->
+      <g stroke="{color}" stroke-width="1.2" opacity="0.85">
+        <!-- Diagonal Up-Right -->
+        <line x1="88" y1="135" x2="120" y2="185" />
+        <line x1="102" y1="125" x2="138" y2="180" />
+        <line x1="118" y1="120" x2="155" y2="175" />
+        <line x1="135" y1="118" x2="170" y2="168" />
+        <line x1="152" y1="120" x2="185" y2="160" />
+        
+        <!-- Diagonal Down-Right -->
+        <line x1="118" y1="185" x2="88" y2="145" />
+        <line x1="135" y1="182" x2="102" y2="132" />
+        <line x1="152" y1="178" x2="118" y2="122" />
+        <line x1="168" y1="170" x2="135" y2="118" />
+        <line x1="182" y1="162" x2="152" y2="120" />
+      </g>
+
+      <!-- Graceful Large Dorsal Fin (Top flowing upwards) -->
+      <path d="M 95 112 C 110 50 170 30 220 25 C 210 55 195 75 225 105 C 190 100 160 105 135 110 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Dorsal Fin Ray Lines -->
+      <g stroke="{color}" stroke-width="1.4" opacity="0.85">
+        <path d="M 105 110 C 120 70 160 48 205 35" fill="none" />
+        <path d="M 120 108 C 135 78 175 62 210 52" fill="none" />
+        <path d="M 135 107 C 150 85 185 75 215 72" fill="none" />
+        <path d="M 150 108 C 165 92 190 88 215 90" fill="none" />
+        <!-- Gold Highlight Accents along fin -->
+        <path d="M 115 88 C 135 65 170 48 198 40" fill="none" stroke="url(#goldSheen)" stroke-width="1.8" />
+      </g>
+
+      <!-- Pectoral Fin (Side fin) -->
+      <path d="M 75 165 C 95 162 135 150 150 160 C 130 175 105 195 80 185 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2" />
+      <g stroke="{color}" stroke-width="1.2">
+        <path d="M 80 170 Q 110 165 140 162" fill="none" />
+        <path d="M 82 176 Q 108 175 132 172" fill="none" />
+      </g>
+
+      <!-- Ventral / Pelvic Fins (Lower flowing fins) -->
+      <!-- Front Ventral Fin -->
+      <path d="M 95 195 C 105 220 120 260 165 275 C 145 240 135 220 125 190 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.2" />
+      <path d="M 105 200 C 115 225 130 250 155 265" fill="none" stroke="{color}" stroke-width="1.4" />
+      <path d="M 112 195 C 120 215 132 235 145 248" fill="none" stroke="{color}" stroke-width="1.2" />
+
+      <!-- Rear Ventral Fin -->
+      <path d="M 135 188 C 155 215 170 250 205 260 C 188 230 178 210 165 180 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.2" />
+      <path d="M 145 192 C 160 218 175 238 195 250" fill="none" stroke="{color}" stroke-width="1.4" />
+
+      <!-- Magnificent Caudal Tail Fin (Split flowing tail) -->
+      <!-- Upper Tail Lobe -->
+      <path d="M 210 150 C 235 125 265 95 305 95 C 285 135 260 155 285 185 C 255 170 235 160 215 155 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Lower Tail Lobe -->
+      <path d="M 215 155 C 240 165 260 185 285 185 C 270 205 240 230 250 260 C 225 235 215 200 205 160 Z" 
+            fill="url(#fishBlushGrad)" stroke="{color}" stroke-width="2.5" stroke-linejoin="round" />
+      
+      <!-- Tail Fin Ray Lines -->
+      <g stroke="{color}" stroke-width="1.4" opacity="0.85">
+        <path d="M 220 152 C 245 128 270 110 295 105" fill="none" />
+        <path d="M 225 154 C 250 135 272 125 288 122" fill="none" />
+        <path d="M 228 156 C 252 145 270 142 280 145" fill="none" />
+        <path d="M 228 158 C 255 165 270 170 282 175" fill="none" />
+        <path d="M 225 160 C 245 185 255 205 268 220" fill="none" />
+        <path d="M 220 162 C 235 195 242 225 245 250" fill="none" />
+      </g>
+    </g>
+    '''
+
+def get_defs_with_blush():
+    return '''
+    <defs>
+      <!-- Champagne Gold Foil Gradients -->
+      <linearGradient id="champagneFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#EBE0CC" />
+        <stop offset="25%" stop-color="#B49A70" />
+        <stop offset="48%" stop-color="#FDFBF7" />
+        <stop offset="72%" stop-color="#A08356" />
+        <stop offset="88%" stop-color="#CBB590" />
+        <stop offset="100%" stop-color="#83693F" />
+      </linearGradient>
+
+      <linearGradient id="champagneFoilHoriz" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#9C8054" />
+        <stop offset="20%" stop-color="#D9C7A7" />
+        <stop offset="40%" stop-color="#F5EFE0" />
+        <stop offset="60%" stop-color="#B49A70" />
+        <stop offset="80%" stop-color="#E2D4BE" />
+        <stop offset="100%" stop-color="#8C7146" />
+      </linearGradient>
+
+      <!-- Soft Blush / Champagne Gradient for Fish Body -->
+      <linearGradient id="fishBlushGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FAF5EE" />
+        <stop offset="40%" stop-color="#F4E9DF" />
+        <stop offset="80%" stop-color="#EFE1D5" />
+        <stop offset="100%" stop-color="#E8D5C4" />
+      </linearGradient>
+
+      <linearGradient id="goldSheen" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#9C8054" />
+        <stop offset="30%" stop-color="#EADDC7" />
+        <stop offset="50%" stop-color="#FFFFFF" />
+        <stop offset="70%" stop-color="#B49A70" />
+        <stop offset="100%" stop-color="#84683C" />
+      </linearGradient>
+
+      <!-- Luxury Shadow Filters -->
+      <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
+        <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="#1A1815" flood-opacity="0.12" />
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1A1815" flood-opacity="0.06" />
+      </filter>
+    </defs>
+    '''
+
+def create_meen_fish_assets():
+    defs = get_defs_with_blush()
+
+    # 1. Official Primary Logo (Matching Image 2 uploaded by user)
+    logo_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  {defs}
+  <!-- Warm Ivory Luxury Card Background -->
+  <rect width="1000" height="1000" fill="#FAF8F5" />
+
+  <!-- Center Celestial Golden Fish -->
+  {get_celestial_fish_svg(x=340, y=190, scale=1.35, color="url(#champagneFoil)", show_sparkles=True)}
+
+  <!-- Brand Typography Matching Image 2 -->
+  <text x="500" y="820" font-family="'Cinzel', 'Playfair Display', 'Didot', 'Georgia', serif" font-size="52" fill="#252525" letter-spacing="0.22em" text-anchor="middle" font-weight="600">MEEN MANIFESTATION</text>
+  
+  <text x="500" y="870" font-family="'Montserrat', 'Helvetica Neue', 'Arial', sans-serif" font-size="16" fill="#B49A70" letter-spacing="0.36em" text-anchor="middle" font-weight="500">NOT JUST FASHION. A STATEMENT OF IDENTITY.</text>
+
+  <!-- Small corner diamond star accent -->
+  <g transform="translate(930, 930) scale(0.6)">
+    <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="#B49A70" opacity="0.4" />
+  </g>
+</svg>'''
+    with open("assets/logos/meen_brand_logo.svg", "w", encoding="utf-8") as f:
+        f.write(logo_svg)
+
+    # 2. Official Brand Banner (Matching Image 1 uploaded by user)
+    banner_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  {defs}
+  <rect width="1200" height="300" fill="#FAF8F5" />
+
+  <!-- Left: Celestial Fish Line Art with Sparkles -->
+  {get_celestial_fish_svg(x=90, y=20, scale=0.88, color="#B49A70", show_sparkles=True)}
+
+  <!-- Center/Right: Brand Typography Lockup Matching Image 1 -->
+  <g transform="translate(420, 0)">
+    <text x="360" y="145" font-family="'Cinzel', 'Playfair Display', 'Didot', serif" font-size="46" fill="#252525" letter-spacing="0.32em" text-anchor="middle" font-weight="600">MEEN MANIFESTATION</text>
+    <text x="360" y="195" font-family="'Montserrat', 'Helvetica Neue', sans-serif" font-size="14" fill="#B49A70" letter-spacing="0.38em" text-anchor="middle" font-weight="500">NOT JUST FASHION. A STATEMENT OF IDENTITY.</text>
+
+    <!-- Subtle elegant golden water reflection below as seen in user banner -->
+    <text x="360" y="245" font-family="'Cinzel', serif" font-size="38" fill="url(#champagneFoilHoriz)" letter-spacing="0.32em" text-anchor="middle" opacity="0.14" transform="scale(1, -0.7) translate(0, -560)">MEEN MANIFESTATION</text>
+  </g>
+
+  <!-- Far right subtle star -->
+  <g transform="translate(1140, 260) scale(0.5)">
+    <path d="M 0 -18 Q 0 0 18 0 Q 0 0 0 18 Q 0 0 -18 0 Q 0 0 0 -18 Z" fill="#B49A70" opacity="0.4" />
+  </g>
+</svg>'''
+    with open("assets/logos/meen_brand_banner.svg", "w", encoding="utf-8") as f:
+        f.write(banner_svg)
+
+    print("Meen celestial fish logo and banner vectors generated successfully!")
+
+if __name__ == "__main__":
+    create_meen_fish_assets()
+

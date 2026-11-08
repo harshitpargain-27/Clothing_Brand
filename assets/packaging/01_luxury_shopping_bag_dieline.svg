@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900">
+  <defs>
+    <style>
+      .cut-line { stroke: #D9381E; stroke-width: 1.5; fill: none; }
+      .crease-line { stroke: #2A6F97; stroke-width: 1.2; stroke-dasharray: 6 4; fill: none; }
+      .foil-block { fill: #B49A70; opacity: 0.85; }
+      .dimension-line { stroke: #666666; stroke-width: 0.8; marker-end: url(#arrow); marker-start: url(#arrow); }
+      .label-text { font-family: 'Montserrat', sans-serif; font-size: 10px; fill: #333333; }
+      .title-text { font-family: 'Cinzel', serif; font-size: 16px; fill: #252525; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#666666" />
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1400" height="900" fill="#FCFAF6" />
+
+  <!-- Title & Production Metadata -->
+  <text x="60" y="50" class="title-text">MEEN MANIFESTATION // LUXURY SHOPPING BAG DIELINE BLUEPRINT</text>
+  <text x="60" y="75" class="label-text" font-weight="600">BAG SPECIFICATION: MEDIUM VERTICAL LUXURY BOUTIQUE TOTE (320 × 400 × 120 MM)</text>
+  <text x="60" y="92" class="label-text">STOCK: 320GSM FEDRIGONI MATERICA COTTON / IVORY • FINISH: MATTE WATER-BASED VARNISH + HOT FOIL STAMPING (KURZ 429)</text>
+
+  <!-- Legend -->
+  <g transform="translate(900, 40)">
+    <line x1="0" y1="10" x2="40" y2="10" class="cut-line" />
+    <text x="50" y="14" class="label-text">SOLID RED: CUTTING LINE (DIE CUT)</text>
+
+    <line x1="0" y1="30" x2="40" y2="30" class="crease-line" />
+    <text x="50" y="34" class="label-text">DASHED BLUE: CREASE / FOLD LINE</text>
+
+    <rect x="0" y="44" width="40" height="12" fill="#B49A70" opacity="0.8" />
+    <text x="50" y="54" class="label-text">GOLD ZONE: FOIL EMBOSSING BLOCK</text>
+  </g>
+
+  <!-- Main Dieline Sheet Schematic -->
+  <!-- Flattened Dieline consists of: Glue Flap (30mm) | Left Gusset (120mm) | Front Face (320mm) | Right Gusset (120mm) | Back Face (320mm) -->
+  <!-- Vertical: Top Turn-in (50mm) | Body Height (400mm) | Bottom Flaps (90mm) -->
+  <g transform="translate(100, 160)">
+    <!-- Base Dieline Box -->
+    <!-- Top Turn-in Fold Line -->
+    <line x1="30" y1="60" x2="1150" y2="60" class="crease-line" />
+    <!-- Bottom Crease Line -->
+    <line x1="30" y1="540" x2="1150" y2="540" class="crease-line" />
+
+    <!-- 1. Glue Flap (0 to 30) -->
+    <polygon points="0,75 30,60 30,540 0,525" class="cut-line" fill="#F0EDE6" />
+    <text x="15" y="300" class="label-text" transform="rotate(-90 15,300)" text-anchor="middle">GLUE FLAP (30mm)</text>
+
+    <!-- 2. Left Gusset (30 to 190, width 160) -->
+    <rect x="30" y="60" width="160" height="480" fill="none" stroke="none" />
+    <!-- Vertical Gusset Center Crease -->
+    <line x1="110" y1="60" x2="110" y2="540" class="crease-line" />
+    <line x1="190" y1="0" x2="190" y2="620" class="crease-line" />
+    <text x="110" y="300" class="label-text" text-anchor="middle">LEFT GUSSET (120mm)</text>
+
+    <!-- 3. Front Face Panel (190 to 610, width 420) -->
+    <rect x="190" y="60" width="420" height="480" fill="#FFFFFF" opacity="0.6" />
+    <line x1="610" y1="0" x2="610" y2="620" class="crease-line" />
+    <text x="400" y="140" class="label-text" font-weight="700" text-anchor="middle" font-size="12">FRONT FACE (320mm)</text>
+
+    <!-- Rope Handle Eyelet / Ribbon Slots (2 positions) -->
+    <circle cx="310" cy="110" r="6" stroke="#252525" stroke-width="1.5" fill="none" />
+    <circle cx="490" cy="110" r="6" stroke="#252525" stroke-width="1.5" fill="none" />
+    <text x="400" y="114" class="label-text" text-anchor="middle" font-size="8">PUNCH HOLES Ø6mm (REINFORCED CARD BACKING)</text>
+
+    <!-- Hot Stamping Foil Area on Front Panel -->
+    <rect x="300" y="220" width="200" height="180" rx="4" class="foil-block" />
+    <text x="400" y="295" font-family="'Cinzel', serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="700">MM</text>
+    <text x="400" y="330" font-family="'Cinzel', serif" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.2em">MEEN MANIFESTATION</text>
+    <text x="400" y="350" font-family="'Montserrat', sans-serif" font-size="7" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.2em">FOIL STAMPING BLOCK (HOT DIE 0.4MM RELIEF)</text>
+
+    <!-- 4. Right Gusset (610 to 770, width 160) -->
+    <line x1="690" y1="60" x2="690" y2="540" class="crease-line" />
+    <line x1="770" y1="0" x2="770" y2="620" class="crease-line" />
+    <text x="690" y="300" class="label-text" text-anchor="middle">RIGHT GUSSET (120mm)</text>
+
+    <!-- 5. Back Face Panel (770 to 1190, width 420) -->
+    <rect x="770" y="60" width="380" height="480" fill="#FFFFFF" opacity="0.6" />
+    <!-- Back Punch Holes -->
+    <circle cx="880" cy="110" r="6" stroke="#252525" stroke-width="1.5" fill="none" />
+    <circle cx="1060" cy="110" r="6" stroke="#252525" stroke-width="1.5" fill="none" />
+    <text x="970" y="300" class="label-text" text-anchor="middle">BACK FACE (320mm)</text>
+
+    <!-- Outer Perimeter Cut Lines -->
+    <!-- Top Cut -->
+    <line x1="30" y1="0" x2="1150" y2="0" class="cut-line" />
+    <!-- Right Cut -->
+    <line x1="1150" y1="0" x2="1150" y2="620" class="cut-line" />
+    <!-- Bottom Slits and Base Flaps -->
+    <line x1="30" y1="620" x2="1150" y2="620" class="cut-line" />
+    <!-- Flap cuts between panels at bottom -->
+    <line x1="190" y1="540" x2="190" y2="620" class="cut-line" />
+    <line x1="610" y1="540" x2="610" y2="620" class="cut-line" />
+    <line x1="770" y1="540" x2="770" y2="620" class="cut-line" />
+
+    <!-- Gusset Bottom Triangle Creases for automatic folding -->
+    <line x1="30" y1="540" x2="110" y2="620" class="crease-line" />
+    <line x1="190" y1="540" x2="110" y2="620" class="crease-line" />
+    <line x1="610" y1="540" x2="690" y2="620" class="crease-line" />
+    <line x1="770" y1="540" x2="690" y2="620" class="crease-line" />
+  </g>
+
+  <!-- Technical Engineering Notes -->
+  <g transform="translate(100, 800)">
+    <text x="0" y="0" class="label-text" font-weight="700">MANUFACTURING NOTES:</text>
+    <text x="0" y="16" class="label-text">1. Reinforced greyboard inserts (800gsm) glued into top turn-in and bottom base for maximum structural rigidity.</text>
+    <text x="0" y="32" class="label-text">2. Handle: 14mm thick round braided herringbone cotton cord, 480mm length, hand-knotted concealed inside turn-in.</text>
+    <text x="0" y="48" class="label-text">3. Maximum load capacity: 8.5 kg. Internal glue: Water-based archival hotmelt.</text>
+  </g>
+</svg>
